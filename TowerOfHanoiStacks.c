@@ -103,8 +103,7 @@ int main() {
                 printf("Auxillary --> Destination\n\n");
             }
                         
-        }
-        printf("\n");    
+        }   
     }
     printf("Destination Peg Final Result\n");
     printf("\t%d\n\t%d\n\t%d\n", dest[2], dest[1], dest[0]);
