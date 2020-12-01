@@ -13,7 +13,7 @@
     
     Algorithm for Tower of Hanoi (iterative)
     Step 1: Count the minimum number of moves using the formula (mentioned in note).
-    Step 2:    If the number of disks are even exchange the Auxillary and destination peg.
+    Step 2: If the number of disks are even exchange the Auxillary and destination peg.
     Step 3: for move = 1 to minimum Moves
             
                 if move % 3 == 1:
