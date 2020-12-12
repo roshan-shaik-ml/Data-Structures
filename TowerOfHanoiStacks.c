@@ -146,7 +146,6 @@ void move(int stack1[], int *topStk1, int stack2[], int *topStk2) {
     int data = delete(stack1, topStk1);
     add(data, stack2, topStk2);
     
-    /* Change in respective stack top values and move instruction. */
-    printf("SP1 Top =  %d SP2 Top =  %d SP3 Top = %d\n", *srcTop, *destTop, *auxTop);
+    /* move instruction. */
     printf("Move disc %d from ", data);
 }
