@@ -3,7 +3,7 @@
     Date: 8th December 2021
     Email: alsahercoder@gmail.com
     
-    This program is used for implementation of Queue function using Operations using two arrays.
+    This program is an implementation of Queue functions using Stack operations with two arrays.
 */
 
 #include <stdio.h>
