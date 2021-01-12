@@ -80,10 +80,10 @@ struct node *deleteBegLL(struct node *head) {
 
 struct node *deleteEndLL(struct node *head) {
     
-    for(ptr = head; ptr -> next != NULL; ptr = ptr -> next);
-    
     /* Changing the next value of last but one node to NULL */
-    ptr -> prev -> next = NULL;    
+    tail -> prev -> next = NULL;  
+    ptr = tail;
+    tail = tail -> prev;
     free(ptr);
     
     return head;
