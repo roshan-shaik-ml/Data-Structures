@@ -6,7 +6,7 @@ struct node {
     int data;
     struct node *prev;
     struct node *next;
-}*head = NULL, *ptr;
+}*head = NULL, *ptr, *tail;
 
 struct node *createLL(struct node *head) {
     
@@ -24,6 +24,7 @@ struct node *createLL(struct node *head) {
             head = newNode;    
             newNode -> prev = NULL;
             newNode -> next = NULL;    
+            tail = newNode;
         }
         
         else {
@@ -31,11 +32,13 @@ struct node *createLL(struct node *head) {
             for(ptr = head; ptr -> next != NULL; ptr = ptr -> next);
             ptr -> next = newNode;
             newNode -> prev = ptr;
+            tail = newNode;
         }
         newNode -> next = NULL;
         printf("Enter the number: ");
         scanf("%d", &num);    
     }
+    return head;
 }
 
 struct node *display(struct node *head) {
@@ -44,6 +47,8 @@ struct node *display(struct node *head) {
         
         printf("%d  ", ptr -> data);
     }
+    printf("\n");
+    return head;
 }
 
 struct node *insertBegLL(struct node *head) {
@@ -85,21 +90,23 @@ struct node *deleteEndLL(struct node *head) {
 }
 
 struct node *insertEndLL(struct node *head) {
-    
-    for(ptr = head; ptr -> next != NULL; ptr = ptr -> next);
-    
+        
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     int num;
     printf("Enter the number: ");
     scanf("%d", &num);
-    
-    ptr -> next = newNode;
-    newNode -> prev = ptr;
+    newNode -> data = num;
+    /* Using tail pointer for end insertion */
+    tail -> next = newNode;
+    newNode -> prev = tail;
     newNode -> next = NULL;
     return head;
 }
 
 int main() {
     
-    return 0;
+    head = createLL(head);
+    head = display(head);
+    head = insertEndLL(head);
+    head = display(head);
 }
