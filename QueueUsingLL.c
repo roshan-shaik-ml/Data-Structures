@@ -79,7 +79,6 @@ int main(){
             
             exit(0);
         }
-        
         else {
             
             printf("Enter the right operation\n");
