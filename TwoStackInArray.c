@@ -1,7 +1,7 @@
 /*
  *  Name: Two Stack in single array.
  *  Email: alsahercoder@gmail.com 
- *  Author: shaik Faizan Roshan Ali
+ *  Author: Shaik Faizan Roshan Ali
  *  Date: 15-01-21 
  *  Description: Manage two stack in one Array. 
  *  
