@@ -1,5 +1,5 @@
 /*
- *   Name: Two Stack in single array.
+ *  Name: Two Stack in single array.
  *  Email: alsahercoder@gmail.com 
  *  Author: shaik Faizan Roshan Ali
  *  Date: 15-01-21 
