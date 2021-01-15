@@ -6,10 +6,10 @@
  *  Description: Manage two stack in one Array. 
  *  
  *  Approach :
- *      - Stack One top is assigned to start index of array
- *      - Stack two top is assigned to end index of array
- *      - Push element in stack One is asusual 
- *      - Push element in stack Two is done in reverse
+ *      - Stack One top is assigned to start index of array.
+ *      - Stack two top is assigned to end index of array.
+ *      - Push element in stack One is as usual.
+ *      - Push element in stack Two is done in reverse.
  *      - At any point stack one top value shouldn't cross stack two top.
 */
 
