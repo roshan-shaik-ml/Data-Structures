@@ -20,7 +20,6 @@
  * };
  */
 
-
 struct ListNode* rotateRight(struct ListNode* head, int k){
     
     if(head == NULL) {
