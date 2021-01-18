@@ -1,3 +1,17 @@
+/*
+ *    Author: Shaik Faizan Roshan Ali
+ *    Date: 18th January 2020
+ *    Email: alsahercoder@gmail.com
+ *    Description: Find the node at which the intersection of two singly linked lists begins.
+ *    Source: https://leetcode.com/problems/intersection-of-two-linked-lists/
+ *    Approach:
+ *          - We need to compare the nodes of both linked lists. 
+ *          - As the linked list can have different length, two pointer direct comparison can fail.
+ *          - So, Count the total Nodes in each of the given two linked list.
+ *          - We don't need the (bigger LL length - smaller LL length) nodes of the bigger linked list.
+ *          - We adjust that by traversing the pointer (bigger LL length - smaller LL length) nodes ahead of the bigger linked list.
+ *          - Now, we can directly compare them and return the node where both pointers match.
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
