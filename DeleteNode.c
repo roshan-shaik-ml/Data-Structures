@@ -35,3 +35,13 @@ void deleteNode(struct ListNode* node) {
     free(frontPtr); 
     free(backPtr);
 }
+
+/*
+    void deleteNode(struct ListNode* node) {
+
+        node -> val = node -> next -> val;
+        struct ListNode *ptr = node -> next; 
+        node -> next = node -> next -> next;
+        free(ptr);   
+    }
+ */
