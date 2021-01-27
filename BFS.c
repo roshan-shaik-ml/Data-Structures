@@ -51,7 +51,7 @@ struct QNode *enqueue(int num, struct node *Node) {
     return head;
 }
 
-struct QNode *dequeue(struct QNode *head) {
+struct node *dequeue(struct QNode *head) {
     
     /* remove the beginning node */
     struct QNode *ptr = head;
@@ -59,7 +59,7 @@ struct QNode *dequeue(struct QNode *head) {
     printf("%d", ptr -> data);
     free(ptr);
     
-    return head;    
+    return head->treeNode;    
 }
 
 void printLL(struct QNode *head) {
@@ -85,12 +85,9 @@ void printLevelOrder(struct node *root, struct QNode *head) {
 
         head = enqueue(parentNode -> right -> data, parentNode -> right);
         head = enqueue(parentNode -> left -> data, parentNode -> left);
-        QPtr = QPtr -> next;
-        parentNode = QPtr -> treeNode;
-        
-        head = dequeue(head);
+        parentNode = dequeue(head);
     } while(head != NULL);
-}
+
 int main() {
 
     root = newNode(1);
