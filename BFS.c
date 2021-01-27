@@ -13,7 +13,7 @@ struct QNode {
     int data;
     struct node *treeNode;
     struct QNode *next;
-}*head = NULL, *tail = NULL, *QPtr = NULL;
+}*head = NULL, *tail = NULL;
 
 struct node *newNode(int payload) {
     
@@ -25,7 +25,7 @@ struct node *newNode(int payload) {
     return newChild;
 }
 
-struct QNode *enqueue(int num, struct node *Node) {
+struct QNode *enqueue(int num, struct node *Node, struct QNode *head) {
     
     /* insert in the end */
     if(Node == NULL)
@@ -51,20 +51,21 @@ struct QNode *enqueue(int num, struct node *Node) {
     return head;
 }
 
-struct node *dequeue(struct QNode *head) {
+struct QNode *dequeue(struct QNode *head) {
     
     /* remove the beginning node */
     struct QNode *ptr = head;
     head = head -> next;
-    printf("%d", ptr -> data);
+    printf("Dequeue : %d\n", ptr -> data);
     free(ptr);
     
-    return head->treeNode;    
+    return head;    
 }
 
 void printLL(struct QNode *head) {
     
     struct QNode *ptr;
+    printf("Printing Queue: ");
     
     for(ptr = head; ptr != NULL; ptr = ptr -> next) {
         
@@ -73,21 +74,34 @@ void printLL(struct QNode *head) {
     printf("\n");
 }
 
+void printHead(struct QNode *head) {
+    
+    if(head == NULL) {
+        
+        printf("NULL head\n");
+        return;
+    }
+    
+    printf("head data : %d\n", head -> data);
+}
+
 void printLevelOrder(struct node *root, struct QNode *head) {
 
-    struct node *parentNode = root;
-    enqueue(parentNode -> data, parentNode); 
+    head = enqueue(root -> data, root, head); 
     printLL(head);
-    QPtr = head;
     /* Enqueue my root node */
     
     do {
 
-        head = enqueue(parentNode -> right -> data, parentNode -> right);
-        head = enqueue(parentNode -> left -> data, parentNode -> left);
-        parentNode = dequeue(head);
+        head = enqueue(head -> treeNode -> left -> data, head -> treeNode -> left, head);
+        head = enqueue(head -> treeNode -> right -> data, head -> treeNode -> right, head);
+        
+        head = dequeue(head);
+        printLL(head);
+        printHead(head);
+        
     } while(head != NULL);
-
+}
 int main() {
 
     root = newNode(1);
