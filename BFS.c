@@ -25,11 +25,11 @@ struct node *newNode(int payload) {
     return newChild;
 }
 
-void enqueue(int num, struct node *Node) {
+struct QNode *enqueue(int num, struct node *Node) {
     
     /* insert in the end */
     if(Node == NULL)
-        return;
+        return head;
     
     struct QNode *enqueueNode = (struct QNode*)malloc(sizeof(struct QNode));
     enqueueNode -> treeNode = Node;
@@ -47,12 +47,13 @@ void enqueue(int num, struct node *Node) {
         tail -> next = enqueueNode;
         tail = tail -> next;
     }
+    
+    return head;
 }
 
 struct QNode *dequeue(struct QNode *head) {
     
     /* remove the beginning node */
-    printf("Dequeue at line 55\n");
     struct QNode *ptr = head;
     head = head -> next;
     printf("%d", ptr -> data);
@@ -82,13 +83,11 @@ void printLevelOrder(struct node *root, struct QNode *head) {
     
     do {
 
-        enqueue(parentNode -> right -> data, parentNode -> right);
-        printLL(head);
-        enqueue(parentNode -> left -> data, parentNode -> left);
-        printLL(head);
-        
-        parentNode = QPtr -> next -> treeNode;
+        head = enqueue(parentNode -> right -> data, parentNode -> right);
+        head = enqueue(parentNode -> left -> data, parentNode -> left);
         QPtr = QPtr -> next;
+        parentNode = QPtr -> treeNode;
+        
         head = dequeue(head);
     } while(head != NULL);
 }
