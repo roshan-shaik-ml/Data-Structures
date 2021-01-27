@@ -42,6 +42,7 @@ void dequeue(struct QNode *head) {
 	struct QNode *ptr = head;
 	head = ptr -> next;
 	free(ptr);	
+    /* free the pointer */
 }
 
 void printLevelOrder(struct node *root) {
