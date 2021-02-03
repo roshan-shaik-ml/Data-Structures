@@ -301,6 +301,40 @@ struct treeNode *lowestCommonAncestor(int payload1, int payload2, struct treeNod
     
     return nodePtr1;
 }
+
+struct treeNode *lowestCommonAncestorII(int payload1, int payload2, struct treeNode *root) {
+    
+    /*
+     *    Approach: 
+     *                - Two nodes traverse from root.
+     *                - The place where the two node traverse in different direction 
+     *                                                                    is the ancestor node.
+     */
+    
+    struct treeNode *node1 = root;
+    struct treeNode *node2 = root;
+    
+    while(node1 == node2 || node1 -> data != payload1 && node2 -> data != payload2) {
+        
+        if(payload1 < node1 -> data && payload2 < node2 -> data) {
+            
+            node1 = node1 -> left;
+            node2 = node2 -> left;
+        }
+        
+        else if (payload1 > node1 -> data && payload2 > node2 -> data) {
+            
+            node1 = node1 -> right;
+            node2 = node2 -> right;
+        }
+        
+        else     
+            break;
+    }
+    
+    return node1;
+}
+
 int main() {
 
     root = createRoot(root, 100);    
@@ -312,16 +346,17 @@ int main() {
     /* Level 2 */
     struct treeNode *Node3 = addLeftChild(Node1, 70);
     struct treeNode *Node4 = addRightChild(Node1, 90);
+    
     struct treeNode *Node5 = addLeftChild(Node2, 110);
     struct treeNode *Node6 = addRightChild(Node2, 130);
-	
-    /* Level 3 */	
     struct treeNode *Node7 = addRightChild(Node6, 140);
     
     inOrderTraversal(root);
     printf("\n");
     
-    struct treeNode *LCA = lowestCommonAncestor(80, 140, root);
+    // struct treeNode *LCA = lowestCommonAncestor(120, 140, root);
+    struct treeNode *LCA = lowestCommonAncestorII(100, 140, root);
+    
     printf("Lowest common ancestor: %d", LCA -> data);
     
     return 0;
